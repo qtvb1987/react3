@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.9.0-alpha.0/umd/react-dom.development.js"></script>
+    <script src="script/babel.min.js"></script>
+    <script src="script/data.js"></script>
+    <title>01</title>
+    <style>
+    .panel{
+        border: 1px solid #000;
+        width:80%;
+    }
+    .title{
+        margin: 0px;
+        padding: 10px;
+        background: #ccc;
+    }
+    p.message{
+        color:#aaa;
+    }
+    p.vip{
+        color:red;
+    }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- <Panel>
+        <Group>
+            <list></list>
+        </Group>
+        <Group>
+            <list></list>
+        </Group>
+        <Group>
+            <list></list>
+        </Group>
+    </Panel> -->
+    <script type="text/babel"> 
+    /*
+    数据 必需包含key 唯一
+    */
+      
+   
+ 
+       class Panel extends React.Component{
+           sethtml(){
+               var list=[<h1>hi react!</h1>,<h1>hi react!</h1>,<h1>hi react!</h1>];
+                 return list;
+            }
+           render(){
+               return (
+                   <div className="panel">
+                     {this.sethtml()}
+                    </div>
+               )
+           }
+       }
+
+       ReactDOM.render(
+            <Panel></Panel>,
+           document.getElementById('app')
+       )
+    </script>
+</body>
+</html>

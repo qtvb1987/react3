@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.9.0-alpha.0/umd/react-dom.development.js"></script>
+    <script src="script/babel.min.js"></script>
+    <title>01</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel"> 
+    /*
+    数据 必需包含key 唯一
+    */
+       var users=['aa','bb','cc'];
+       var obj={left:100,right:200};
+       ReactDOM.render(
+           <div>
+                <ul>
+                    {
+                        users.map( (user,index)=>{
+                            return <li key={index}>{user}</li>
+                        })
+                    }
+                </ul>
+                <ul>
+                    {
+                         Object.keys(obj).map(key=>{
+                             return <li key={key}>{key}-{obj[key]}</li>
+                         })
+                    }
+                </ul>
+           </div>,
+           document.getElementById('app')
+       )
+    </script>
+</body>
+</html>

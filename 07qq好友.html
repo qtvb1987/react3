@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.9.0-alpha.0/umd/react-dom.development.js"></script>
+    <script src="script/babel.min.js"></script>
+    <script src="script/data.js"></script>
+    <title>01</title>
+    <style>
+    .panel{
+        border: 1px solid #000;
+        width:80%;
+    }
+    .title{
+        margin: 0px;
+        padding: 10px;
+        background: #ccc;
+    }
+    p.message{
+        color:#aaa;
+    }
+    p.vip{
+        color:red;
+    }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- <Panel>
+        <Group>
+            <list></list>
+        </Group>
+        <Group>
+            <list></list>
+        </Group>
+        <Group>
+            <list></list>
+        </Group>
+    </Panel> -->
+    <script type="text/babel"> 
+    /*
+    数据 必需包含key 唯一
+    */
+      
+    class List extends React.Component{
+           render(){
+               return (
+                    <ul>
+                       {
+                           this.props.data.map((item,index)=>
+                           {
+                               return (
+                                   <li key={index}>
+                                    <p className={item.vip?"vip":""}>{item.username}</p>
+                                    <p className="message">{item.message}</p>
+                                    </li>
+                               )
+                           })
+                       }
+                    </ul>
+               )
+           }
+       }
+       class Group extends React.Component{
+           render(){
+               return (
+                    <div>
+                      <h2 className="title">{this.props.data.name}</h2>
+                      <List data={this.props.data.list}></List>
+                    </div>
+               )
+           }
+       }
+ 
+       class Panel extends React.Component{
+           render(){
+               return (
+                   <div className="panel">
+                     {
+                         Object.keys(this.props.data).map((key,index)=>{
+                             return <Group key={index} data={this.props.data[key]}></Group>
+                         })
+                     }
+                    </div>
+               )
+           }
+       }
+
+       ReactDOM.render(
+            <Panel data={dataList}></Panel>,
+           document.getElementById('app')
+       )
+    </script>
+</body>
+</html>
